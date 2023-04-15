@@ -1,5 +1,4 @@
 from django.db import models
-from accounts.models import User
 from django.urls import reverse
 import qrcode
 import io
@@ -24,8 +23,6 @@ class Organization(models.Model):
     start_time = models.DateTimeField(auto_now_add=True, null=False, blank=False,  verbose_name="Дата начала")
     end_time = models.DateTimeField(null=True, blank=True, verbose_name="Дата конца")
     email = models.EmailField(verbose_name="Почта")
-    branch = models.ForeignKey('webapp.Branch', null=False, blank=False,
-                                     related_name='org_wt', on_delete=models.CASCADE, verbose_name="Филиал организации")
 
     def __str__(self):
         return f'{self.pk}. {self.name}'
@@ -33,6 +30,8 @@ class Organization(models.Model):
 
 class Branch(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False, verbose_name="Название Филиала")
+    organization = models.ForeignKey('webapp.Organization', null=False, blank=False,
+                               related_name='org_branch', on_delete=models.CASCADE, verbose_name="Oрганизациz")
 
     def get_qr_code_svg(self):
         url = reverse('branch_detail',

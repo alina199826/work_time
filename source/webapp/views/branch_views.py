@@ -5,17 +5,20 @@ from rest_framework.response import Response
 from rest_framework import status
 from webapp.models import Branch
 from webapp.serializers import BranchSerializer
+from rest_framework.pagination import PageNumberPagination
 
 
 class BranchList(ListAPIView):
     queryset = Branch.objects.all()
     serializer_class = BranchSerializer
+    pagination_class = PageNumberPagination
 
     def list(self, request, *args, **kwargs):
         queryset = self.get_queryset()
-        serializer = self.get_serializer(queryset, many=True)
-        data = serializer.data
-        return Response(data, status=status.HTTP_200_OK)
+        page = self.paginate_queryset(queryset)
+        serializer = self.get_serializer(page, many=True)
+        return self.get_paginated_response(serializer.data)
+
 
 class BranchDetail(APIView):
 
@@ -32,6 +35,5 @@ class BranchDetail(APIView):
             'id': branch.id,
             'name': branch.name,
             'qr_code_svg': qr_code_svg,
-            # Добавьте дополнительные поля филиала, если нужно
         }
         return Response(data, status=status.HTTP_200_OK)

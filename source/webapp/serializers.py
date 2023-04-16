@@ -9,6 +9,10 @@ class WorkTimeSerializer(serializers.ModelSerializer):
         fields = '__all__'
         read_only_fields = ['id', 'created_at']
 
+    def get_duration_hours(self, obj):
+        duration = obj.end_time - obj.start_time
+        return round(duration.total_seconds() / 3600, 2)
+
 
 class OrganizationSerializer(serializers.ModelSerializer):
     class Meta:

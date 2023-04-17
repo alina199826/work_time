@@ -13,8 +13,8 @@ class User(models.Model):
                                      blank=False,
                                      null=False, verbose_name="Организация")
     login = models.CharField(
-        max_length=100,
-        validators=[RegexValidator(r'^\d{10}$')],
+        max_length=13,
+        validators=[RegexValidator(r'^\+996\d{9}$')],
         unique=True,
         blank=False,
         null=False,

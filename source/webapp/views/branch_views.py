@@ -7,6 +7,15 @@ from webapp.models import Branch
 from webapp.serializers import BranchSerializer
 from rest_framework.pagination import PageNumberPagination
 
+from rest_framework.generics import CreateAPIView
+from rest_framework.permissions import IsAdminUser
+
+class BranchCreateAPIView(CreateAPIView):
+    serializer_class = BranchSerializer
+    permission_classes = [IsAdminUser]
+
+    def has_permission(self, request, view):
+        return request.user.is_staff
 
 class BranchList(ListAPIView):
     queryset = Branch.objects.all()

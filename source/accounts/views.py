@@ -1,6 +1,6 @@
 from django.http import Http404
-from rest_framework.permissions import IsAdminUser, IsAuthenticatedOrReadOnly
-from rest_framework import status, generics
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework import generics
 from django.contrib.auth.models import User
 from rest_framework.pagination import PageNumberPagination
 from django.db.models import Q

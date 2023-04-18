@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,6 +40,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'webapp',
     'accounts',
+    'tg_bot_weather',
+    'parser_search',
 ]
 
 MIDDLEWARE = [

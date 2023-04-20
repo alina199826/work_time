@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include('webapp.urls')),
     path('accounts/', include('accounts.urls')),
     path('search/', include('parser_search.urls')),
+    path('webhook/', include('tg_bot_weather.urls')),
 ]

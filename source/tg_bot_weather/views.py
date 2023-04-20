@@ -1,3 +1,4 @@
+
 from datetime import datetime
 from tg_bot_weather.bot_settings import OPEN_WEATHER_TOKEN, TG_BOT_TOKEN
 import requests
@@ -7,6 +8,7 @@ from django.http import HttpResponse
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
+from asgiref.sync import async_to_sync
 
 bot = Bot(token=TG_BOT_TOKEN)
 dp = Dispatcher(bot)
@@ -33,8 +35,6 @@ async def get_weather(message: types.Message):
         city = data["name"]
         cur_weather = data["main"]["temp"]
 
-        weather_description = data["weather"][0]["main"]
-
 
         humidity = data["main"]["humidity"]
         wind = data["wind"]["speed"]
@@ -56,10 +56,10 @@ async def get_weather(message: types.Message):
 
 
 @csrf_exempt
-async def webhook(request):
+def webhook(request):
     if request.method == 'POST':
         update = types.Update(**request.POST.dict())
-        await dp.process_update(update)
+        async_to_sync(dp.process_update)(update)
         return HttpResponse(status=200)
     elif request.method == 'GET':
         return HttpResponse('This is a Telegram bot webhook URL.')

@@ -13,7 +13,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os
 from pathlib import Path
 
-
+TG_BOT_TOKEN = os.environ.get('6083711043:AAFKndqfOzGq3PYHE57ZWRZ59yqehSczl6k')
+OPEN_WEATHER_TOKEN = os.environ.get('ad5236a5c0c86db0a0f1263cc15bc76f')
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -45,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'aiogram',
     'webapp',
     'accounts',
     'tg_bot_weather',

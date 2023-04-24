@@ -10,6 +10,11 @@ from rest_framework.pagination import PageNumberPagination
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import IsAdminUser
 
+from django.views.generic import TemplateView
+
+
+class Test(TemplateView):
+    template_name = "test.html"
 class BranchCreateAPIView(CreateAPIView):
     serializer_class = BranchSerializer
     permission_classes = [IsAdminUser]

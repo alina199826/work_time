@@ -17,10 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('webapp.urls')),
     path('accounts/', include('accounts.urls')),
-    path('search/', include('parser_search.urls')),
-    path('webhook/', include('tg_bot_weather.urls')),
+    path('search/', include('parser_search.urls'))
 ]

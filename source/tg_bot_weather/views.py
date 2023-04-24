@@ -1,8 +1,10 @@
+import json
+
 import telebot
 import requests
 import re
 from main.settings import OPEN_WEATHER_TOKEN, TG_BOT_TOKEN
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -40,13 +42,20 @@ def get_weather(message):
             text="Проверьте координаты"
         )
 
+
 @csrf_exempt
 def telegram_webhook(request):
     if request.method == 'POST':
         json_str = request.body.decode('UTF-8')
+        try:
+            json_data = json.loads(json_str)
+        except json.decoder.JSONDecodeError as e:
+            print(f'Error decoding JSON: {e}')
+            return HttpResponseBadRequest()
+
+        print(json_data)
         update = telebot.types.Update.de_json(json_str)
         bot.process_new_updates([update])
         return HttpResponse('')
     else:
         return HttpResponse('Hello from Django!')
-

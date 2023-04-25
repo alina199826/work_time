@@ -124,7 +124,7 @@ DEFAULT_FROM_EMAIL = 'example@gmail.com'
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 1
+    'PAGE_SIZE': 10
 }
 
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]

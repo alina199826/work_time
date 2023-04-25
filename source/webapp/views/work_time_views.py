@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from rest_framework import generics
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
@@ -14,14 +15,15 @@ class UserWorkTimeByMonth(APIView):
         try:
             user = User.objects.get(id=user_id)
             start_date = datetime(int(year), int(month), 1)
-            end_date = start_date.replace(day=28) + timedelta(days=4)
-            end_date = end_date - timedelta(days=end_date.day)
-            work_times = WorkTime.objects.filter(user=user, start_time__range=[start_date, end_date])
-            total_duration = timedelta()
-            for work_time in work_times:
-                duration = work_time.end_time - work_time.start_time
-                total_duration += duration
-            total_hours = round(total_duration.total_seconds() / 3600, 2)
+            end_date = start_date.replace(day=1) + timedelta(days=32)
+            work_times = WorkTime.objects.filter(
+                user=user,
+                start_time__gte=start_date,
+                start_time__lt=end_date,
+            ).annotate(
+                duration=Sum('end_time', 'start_time')
+            )
+            total_hours = round(work_times.aggregate(Sum('duration'))['duration__sum'].total_seconds() / 3600, 2)
             serializer = WorkTimeSerializer(work_times, many=True)
             data = serializer.data
             data.append({'total_hours': total_hours})

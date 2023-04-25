@@ -1,5 +1,5 @@
 from django.http import Http404
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import  IsAdminUser
 from rest_framework import generics
 from django.contrib.auth.models import User
 from rest_framework.pagination import PageNumberPagination
@@ -16,7 +16,7 @@ from .serializers import UserSerializer
 class UserList(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAdminUser]
     pagination_class = PageNumberPagination
 
     def get(self, request, *args, **kwargs):

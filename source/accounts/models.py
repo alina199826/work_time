@@ -1,11 +1,26 @@
 import uuid
-
 from django.core.validators import RegexValidator
 from django.db import models
 from webapp.models import Organization
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
-class User(models.Model):
+class UserManager(BaseUserManager):
+    def create_user(self, login, password=None, **extra_fields):
+        if not login:
+            raise ValueError('The Login field must be set')
+        user = self.model(login=login, **extra_fields)
+        user.set_password(password)
+        user.save()
+        return user
+
+    def create_superuser(self, login, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        return self.create_user(login, password, **extra_fields)
+
+
+class User(AbstractBaseUser):
     name = models.CharField(max_length=100, blank=False, null=False, verbose_name="Имя")
     last_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Фамилия")
     organization = models.ForeignKey('webapp.Organization', on_delete=models.CASCADE,
@@ -20,14 +35,20 @@ class User(models.Model):
         null=False,
         verbose_name="Логин"
     )
-    password = models.CharField(max_length=128, blank=False, null=False, verbose_name="Пароль")
     email_verified = models.BooleanField(default=False, verbose_name="Email подтвержден")
     email_verification_token = models.UUIDField(default=uuid.uuid4, editable=False,
                                                 verbose_name="Токен верификации по email")
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
 
+    USERNAME_FIELD = 'login'
 
-    def __str__(self):
-        return f"{self.name} "
+    objects = UserManager()
+
+    class Meta:
+        verbose_name = 'User'
+        verbose_name_plural = 'Users'
 
 
 class VerificationToken(models.Model):

@@ -1,13 +1,9 @@
-from django.http import Http404
-from rest_framework.generics import ListAPIView
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
 from webapp.models import Branch
 from webapp.serializers import BranchSerializer
-from rest_framework.pagination import PageNumberPagination
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 from rest_framework.permissions import IsAdminUser
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.exceptions import PermissionDenied
 
 
 class BranchCreateAPIView(CreateAPIView):
@@ -15,34 +11,25 @@ class BranchCreateAPIView(CreateAPIView):
     permission_classes = [IsAdminUser]
 
 
-
-
 class BranchList(ListAPIView):
-    queryset = Branch.objects.all()
     serializer_class = BranchSerializer
     pagination_class = PageNumberPagination
 
-    def list(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        page = self.paginate_queryset(queryset)
-        serializer = self.get_serializer(page, many=True)
-        return self.get_paginated_response(serializer.data)
+    def get_queryset(self):
+        queryset = Branch.objects.filter(organization__id=self.request.user.organization.id)
+        return queryset
 
 
-class BranchDetail(APIView):
+class BranchDetail(RetrieveAPIView):
+    serializer_class = BranchSerializer
+    lookup_field = 'pk'
 
-    def get_object(self, pk):
-        try:
-            return Branch.objects.get(pk=pk)
-        except Branch.DoesNotExist:
-            raise Http404
+    def get_object(self):
+        obj = super().get_object()
+        if obj.organization.id != self.request.user.organization.id:
+            raise PermissionDenied()
+        return obj
 
-    def get(self, request, pk):
-        branch = self.get_object(pk)
-        qr_code_svg = branch.get_qr_code_svg()
-        data = {
-            'id': branch.id,
-            'name': branch.name,
-            'qr_code_svg': qr_code_svg,
-        }
-        return Response(data, status=status.HTTP_200_OK)
+    def get_queryset(self):
+        queryset = Branch.objects.filter(organization__id=self.request.user.organization.id)
+        return queryset

@@ -1,6 +1,6 @@
 from django.urls import path
 from webapp.views.work_time_views import WorkTimeList, UserWorkTimeByMonth
-from webapp.views.branch_views import BranchDetail, BranchList, BranchCreateAPIView
+from webapp.views.branch_views import BranchCreateAPIView, BranchList, BranchDetail
 from webapp.views.organization_views import OrganizationList, OrganizationDetail
 
 urlpatterns = [

@@ -3,7 +3,7 @@ from accounts.views import UserList, UserDetail
 from accounts.views import UserRegistrationView, VerifyEmailView
 
 
-aa_name = "accounts"
+aap_name = "accounts"
 
 urlpatterns = [
     path('user/', UserList.as_view(), name='user_list'),

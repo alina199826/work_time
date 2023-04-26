@@ -34,6 +34,9 @@ class Organization(models.Model):
     start_time = models.DateTimeField(auto_now_add=True, null=False, blank=False,  verbose_name="Дата начала")
     end_time = models.DateTimeField(null=True, blank=True, verbose_name="Дата конца")
     email = models.EmailField(verbose_name="Почта")
+    admin = models.ManyToManyField('accounts.User',
+                                    related_name='admin_organization',
+                                     )
 
     def __str__(self):
         return f'{self.pk}. {self.name}'

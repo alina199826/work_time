@@ -6,12 +6,12 @@ class OrganizationAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'start_time', 'end_time', 'email']
 
 class WorkTimeAdmin(admin.ModelAdmin):
-    list_display = ['id', 'user', 'start_time', 'end_time', 'created_at', 'organization']
+    list_display = ['id', 'user', 'start_time', 'end_time', 'created_at', 'organization', 'branch']
 
 
 
 class BranchAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'organization']
+    list_display = ['id', 'name', 'organization', 'qr_code']
 
 
 admin.site.register(Organization, OrganizationAdmin)

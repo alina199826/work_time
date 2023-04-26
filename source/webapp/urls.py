@@ -6,7 +6,7 @@ from webapp.views.organization_views import OrganizationList, OrganizationDetail
 urlpatterns = [
     path('branch/', BranchList.as_view(), name='branch_list'),
     path('branch/<int:pk>/', BranchDetail.as_view(), name='branch_detail'),
-    path('branche/create/', BranchCreateAPIView.as_view(), name='create_branch'),
+    path('branch/create/', BranchCreateAPIView.as_view(), name='create_branch'),
     path('organizations/', OrganizationList.as_view(), name='organization_list'),
     path('organizations/<int:pk>/', OrganizationDetail.as_view(), name='organization_detail'),
     path('work_time/', WorkTimeList.as_view(), name='work_time'),

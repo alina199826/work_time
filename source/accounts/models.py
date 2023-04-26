@@ -26,10 +26,8 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     name = models.CharField(max_length=100, blank=False, null=False, verbose_name="Имя")
     last_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="Фамилия")
-    organization = models.ForeignKey('webapp.Organization', on_delete=models.CASCADE,
-                                     related_name='user_organization',
-                                     blank=False,
-                                     null=False, verbose_name="Организация")
+    organization = models.ManyToManyField('webapp.Organization',
+                                     related_name='user_organization')
     login = models.CharField(
         max_length=13,
         validators=[RegexValidator(r'^\+996\d{9}$')],

@@ -1,6 +1,7 @@
+
 from django.http import Http404
 from rest_framework.permissions import IsAdminUser
-from rest_framework import generics
+from rest_framework import generics, views, response
 from django.contrib.auth.models import User
 from rest_framework.pagination import PageNumberPagination
 from django.db.models import Q
@@ -68,8 +69,7 @@ class UserDetail(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-
-class UserRegistrationView(APIView):
+class UserRegistrationView(views.APIView):
     def post(self, request):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
@@ -86,7 +86,7 @@ class UserRegistrationView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class VerifyEmailView(APIView):
+class VerifyEmailView(views.APIView):
     def get(self, request, token):
         try:
             user = User.objects.get(email_verification_token=token)

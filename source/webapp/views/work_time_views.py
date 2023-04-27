@@ -6,7 +6,7 @@ from webapp.serializers import WorkTimeSerializer
 from accounts.models import User
 from rest_framework.views import APIView
 from datetime import datetime, time, timedelta
-from django.db.models import Count, F, Sum, Case, When
+from django.db.models import Sum, Case, When
 from rest_framework.response import Response
 from django.db import models
 

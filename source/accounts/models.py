@@ -53,7 +53,7 @@ class User(AbstractBaseUser):
 
 
 class VerificationToken(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_token", verbose_name="Работник")
+    user = models.OneToOneField('accounts.User', on_delete=models.CASCADE, related_name="user_token", verbose_name="Работник")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Время и дата создания")
 
     @property

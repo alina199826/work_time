@@ -1,0 +1,281 @@
+[
+{
+    "model": "webapp.organization",
+    "pk": 1,
+    "fields": {
+        "name": "ogr 1",
+        "start_time": "2023-04-26T11:41:25.366Z",
+        "end_time": "2023-04-05T11:41:21Z",
+        "email": "gartok@gmail.com",
+        "admin": [
+            1
+        ]
+    }
+},
+{
+    "model": "webapp.organization",
+    "pk": 2,
+    "fields": {
+        "name": "Team Lead",
+        "start_time": "2023-04-26T18:35:11.545Z",
+        "end_time": null,
+        "email": "gartok.alina@gmail.com",
+        "admin": [
+            2
+        ]
+    }
+},
+{
+    "model": "webapp.organization",
+    "pk": 3,
+    "fields": {
+        "name": "org team",
+        "start_time": "2023-04-26T19:10:08.376Z",
+        "end_time": null,
+        "email": "alina@gmail.com",
+        "admin": [
+            2
+        ]
+    }
+},
+{
+    "model": "webapp.organization",
+    "pk": 4,
+    "fields": {
+        "name": "t5r",
+        "start_time": "2023-04-27T08:38:02.100Z",
+        "end_time": null,
+        "email": "gartok@gmail.com",
+        "admin": [
+            1
+        ]
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 2,
+    "fields": {
+        "name": "branch 2",
+        "organization": 1,
+        "qr_code": "27533938b4f45fd3522e8bb6694c7c99fc4e9f9a"
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 3,
+    "fields": {
+        "name": "branch test",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 4,
+    "fields": {
+        "name": "branch test",
+        "organization": 1,
+        "qr_code": "PNG\r\n\u001a\n\u0000\u0000\u0000\rIHDR\u0000\u0000\u0001^\u0000\u0000\u0001^\u0001\u0000\u0000\u0000\u0000åPJ·\u0000\u0000\u0001bIDATxíÚA®Ã \fEQ¤, KÊÖY\u0012\u000b¨Ä\u000fÆFI¾:|H×ªC'\r¤Mõ÷ø$0\u0018\f\u0006Á`A¿Ûk=_>ñé\u000eÇsXÎÉ£´eûÃ,X\u0016·Ô¶Ù¶>\u0011C[\u0006^\u0007Og³àõp¾{Â1l\u0005Û7Íã©!Uqòè[åxñ\u0000Ëã¯([Ït\u0019`aÇ~ÙË´x£õ¾{ïÏ`1Ülá·Vº¾¶ÞZ.X\u0010ÏkË<ÓµFó\u0005«ã\u001aYµt±Õ8Çn¾\f,ÍYôý2m~\u001d9¢ÁÚø»åÎ=ôþ\f\u0016Á9]Òpt`ð*¸FÎß0ü\u000b\u0006ÖÆ6Ñ\u001cÏá\"\u001eú3X\u000fÏèÅix\u001fßòpp\u0005ká\u001cÉ½Ý:ÒsÁÕð\u001cÚ\u0001(Î>~¢\u0005/¯?&ZßZ.X\u001b«ÇX\u0001^\nÛ_2rº<{-X°\u0010\u001eÃ\u0012OßÆ¦yO7X\u000fGõÙëÕãýà\nVÁ?\u0005\u0018\f\u0006Á`°\u0016þ\u0003êË$Ý\u001c*{E\u0000\u0000\u0000\u0000IEND®B`"
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 5,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 6,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 7,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 8,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 9,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 10,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 11,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 12,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 13,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 14,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 15,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 16,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 17,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 18,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 19,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 20,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 21,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": null
+    }
+},
+{
+    "model": "webapp.branch",
+    "pk": 22,
+    "fields": {
+        "name": "branch 225",
+        "organization": 1,
+        "qr_code": "/static/home/dell/%D0%A0%D0%B0%D0%B1%D0%BE%D1%87%D0%B8%D0%B9%D1%81%D1%82%D0%BE%D0%BB/Desktop/zeon/work_time/source/staticfile/code/qr_code.svg"
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 1,
+    "fields": {
+        "password": "123",
+        "last_login": null,
+        "name": "anna",
+        "last_name": "dev",
+        "login": "+996555555555",
+        "email_verified": false,
+        "email_verification_token": "de7ddc29-3b02-48a8-a922-02fc08572f25",
+        "is_active": true,
+        "is_staff": false,
+        "is_superuser": false,
+        "organization": [
+            2
+        ]
+    }
+},
+{
+    "model": "accounts.user",
+    "pk": 2,
+    "fields": {
+        "password": "123",
+        "last_login": null,
+        "name": "Team Lead",
+        "last_name": null,
+        "login": "+996111111111",
+        "email_verified": false,
+        "email_verification_token": "08f9f445-d50b-4455-81b4-469efd0b5dfe",
+        "is_active": true,
+        "is_staff": false,
+        "is_superuser": false,
+        "organization": [
+            1
+        ]
+    }
+}
+]

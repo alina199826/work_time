@@ -2,6 +2,10 @@ from django.db import models
 from django.urls import reverse
 import qrcode
 import io
+from django.templatetags.static import static
+import os
+
+from main import settings
 
 
 class WorkTime(models.Model):
@@ -56,12 +60,12 @@ class Branch(models.Model):
         img = qr.make_image(fill_color="black", back_color="white")
         output = io.BytesIO()
         img.save(output)
-        svg = output.getvalue().decode('ISO-8859-1')
-        output.close()
-        self.qr_code = svg
+        static_path = os.path.join(settings.STATIC_ROOT, 'code/qr_code.svg')
+        img.save(static_path)
+        self.qr_code = static(static_path)
         self.save()
-        return svg
-
+        output.close()
+        return self.qr_code
     def __str__(self):
         return f'{self.pk}. {self.name}'
 

@@ -12,3 +12,4 @@ settings_local.py
 .env
 db.sqlite3
 bot_settings.py
+staticfile

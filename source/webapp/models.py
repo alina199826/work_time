@@ -46,10 +46,16 @@ class Organization(models.Model):
         return f'{self.pk}. {self.name}'
 
 
+class Department(models.Model):
+    name = models.CharField(max_length=100, null=False, blank=False, verbose_name="Отдел")
+    organization = models.ForeignKey('webapp.Organization', null=False, blank=False,
+                                     related_name='department_branch', on_delete=models.CASCADE, verbose_name="Oрганизация")
+
+
 class Branch(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False, verbose_name="Название Филиала")
     organization = models.ForeignKey('webapp.Organization', null=False, blank=False,
-                               related_name='org_branch', on_delete=models.CASCADE, verbose_name="Oрганизациz")
+                               related_name='org_branch', on_delete=models.CASCADE, verbose_name="Oрганизация")
     qr_code = models.TextField(blank=True, null=True, verbose_name='QRcode')
 
     def get_qr_code_svg(self):
